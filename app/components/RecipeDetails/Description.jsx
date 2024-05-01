@@ -1,3 +1,6 @@
+import FavouriteButton from "./FavouriteButton";
+import ShareButton from "./ShareButton";
+
 const Description = ({ item }) => {
     const { name, category, description, activeTime, totalTime, serves } = item;
     return (
@@ -99,7 +102,7 @@ const Description = ({ item }) => {
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
                     </svg>
-                    <span>Favourite</span>
+                    <FavouriteButton />
                 </div>
 
                 <div className="flex gap-2 text-gray-600 cursor-pointer hover:text-[#0E79F6]">
@@ -121,7 +124,7 @@ const Description = ({ item }) => {
                         <path d="M8.7 10.7l6.6 -3.4" />
                         <path d="M8.7 13.3l6.6 3.4" />
                     </svg>
-                    <span>Share</span>
+                    <ShareButton />
                 </div>
             </div>
         </div>

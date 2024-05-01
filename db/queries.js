@@ -16,4 +16,19 @@ async function getItemById(id) {
     return replaceMongoIdInObject(item);
 }
 
-export { getAllItems, getItemById };
+async function getCategories() {
+    const allItems = await itemModel.find().lean();
+    const uniqueCategories = new Set();
+    allItems.forEach((recipe) => {
+        uniqueCategories.add(recipe.category);
+    });
+    const uniqueCategoriesArray = Array.from(uniqueCategories);
+    return uniqueCategoriesArray;
+}
+
+async function getItemsByCategory(category) {
+    const items = await itemModel.find({ category }).lean();
+    return replaceMongoIdInArray(items);
+}
+
+export { getAllItems, getCategories, getItemById, getItemsByCategory };
