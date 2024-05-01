@@ -1,10 +1,34 @@
-import Link from "next/link";
+"use client";
+
+import { loginUser } from "@/actions";
+import { useAuth } from "@/hooks/useAuth";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const Login = () => {
+    const [error, setError] = useState("");
+    const { setAuth } = useAuth();
+    const router = useRouter();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const formData = new FormData(e.currentTarget);
+            const user = await loginUser(formData);
+            if (user) {
+                setAuth(user);
+                router.push("/");
+            } else {
+                setError("Invalid credentials");
+            }
+        } catch (err) {
+            setError(err.message);
+        }
+    };
     return (
-        <div className="max-w-[450px] w-full mx-auto p-6 border border-gray-700/20 rounded-md">
-            <h4 className="font-bold text-2xl">Sign in</h4>
-            <form className="login-form">
+        <>
+            {error && <p className="my-3 font-bold text-red-500">{error}</p>}
+            <form className="login-form" onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="email">Email Address</label>
                     <input type="email" name="email" id="email" />
@@ -22,16 +46,7 @@ const Login = () => {
                     Login
                 </button>
             </form>
-
-            <p className="text-center text-xs text-gray-600">Or</p>
-
-            <Link
-                href="/register"
-                className="underline text-sm mx-auto block text-gray-600 mt-4 text-center"
-            >
-                Create New Account
-            </Link>
-        </div>
+        </>
     );
 };
 
