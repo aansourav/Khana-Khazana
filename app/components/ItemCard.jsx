@@ -1,9 +1,13 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const ItemCard = ({ item }) => {
     const { name, rating, author, thumbnail } = item;
     return (
-        <div className="card">
+        <Link
+            className="card shadow-md px-3 py-2 rounded-md"
+            href={`/details/${item.id}`}
+        >
             <Image
                 src={thumbnail}
                 className="rounded-md"
@@ -22,7 +26,7 @@ const ItemCard = ({ item }) => {
                 <span>⭐️ {rating}</span>
                 <span>By: {author}</span>
             </div>
-        </div>
+        </Link>
     );
 };
 
