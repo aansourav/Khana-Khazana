@@ -12,6 +12,7 @@ const schema = new Schema({
     email: {
         required: true,
         type: String,
+        unique: true,
     },
     password: {
         required: true,
@@ -21,6 +22,16 @@ const schema = new Schema({
         required: true,
         type: Array,
     },
+});
+
+schema.pre("save", async function (next) {
+    const existingUser = await this.constructor.findOne({ email: this.email });
+    if (existingUser) {
+        const error = new Error("A user with this email already exists");
+        next(error);
+    } else {
+        next();
+    }
 });
 
 export const userModel =

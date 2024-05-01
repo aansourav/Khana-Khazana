@@ -1,6 +1,7 @@
 "use server";
 
-import { findUser } from "@/db/queries";
+import { createUser, findUser } from "@/db/queries";
+import { redirect } from "next/navigation";
 
 async function registerUser(formData) {
     const user = Object.fromEntries(formData);
