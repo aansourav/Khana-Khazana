@@ -6,6 +6,7 @@ import {
     replaceMongoIdInArray,
     replaceMongoIdInObject,
 } from "@/utils/data-util";
+import mongoose from "mongoose";
 
 async function getAllItems() {
     const allItems = await itemModel.find().lean();
@@ -13,6 +14,9 @@ async function getAllItems() {
 }
 
 async function getItemById(id) {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        throw new Error("Invalid ObjectId");
+    }
     const item = await itemModel.findById(id).lean();
     return replaceMongoIdInObject(item);
 }

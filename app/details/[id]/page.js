@@ -25,6 +25,7 @@ const DetailsPage = async ({ params: { id } }) => {
                         image={`${item?.image}=${encodeURIComponent(
                             item?.name
                         )}`}
+                        name={item?.name}
                     />
                     <Description item={item} />
                 </div>
