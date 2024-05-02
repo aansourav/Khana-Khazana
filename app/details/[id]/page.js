@@ -21,7 +21,11 @@ const DetailsPage = async ({ params: { id } }) => {
         <main>
             <section>
                 <div className="grid grid-cols-12 container gap-8 justify-items-center">
-                    <ImageSection image={`${item?.image}?${item?.name}`} />
+                    <ImageSection
+                        image={`${item?.image}=${encodeURIComponent(
+                            item?.name
+                        )}`}
+                    />
                     <Description item={item} />
                 </div>
             </section>
