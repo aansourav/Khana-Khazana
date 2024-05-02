@@ -1,6 +1,12 @@
 import Link from "next/link";
 import Login from "../components/Login";
 
+export async function generateMetadata() {
+    return {
+        title: "Khana Khazana | Login",
+    };
+}
+
 const LoginPage = () => {
     return (
         <main className="">

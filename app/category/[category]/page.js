@@ -1,6 +1,13 @@
 import ItemCard from "@/app/components/ItemCard";
 import { getItemsByCategory } from "@/db/queries";
 
+export async function generateMetadata({ params }) {
+    const category = decodeURIComponent(params?.category);
+    return {
+        title: `Khana Khazana | ${category} Items`,
+    };
+}
+
 const CategoryPage = async ({ params: { category } }) => {
     const itemCategory = decodeURIComponent(category);
     const items = await getItemsByCategory(itemCategory);

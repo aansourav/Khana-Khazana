@@ -17,9 +17,9 @@ const SignInOut = () => {
         <div>
             {auth ? (
                 <>
-                    <a className="cursor-pointer" onClick={logout}>
+                    <span className="cursor-pointer" onClick={logout}>
                         Logout
-                    </a>
+                    </span>
                 </>
             ) : (
                 <Link href="/login">Login</Link>

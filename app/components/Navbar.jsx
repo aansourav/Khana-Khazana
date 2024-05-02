@@ -8,7 +8,11 @@ const Navbar = () => {
         <nav>
             <div className="container flex justify-between py-6">
                 <Link href="/">
-                    <Image src={Logo} alt="" className="object-cover" />
+                    <Image
+                        src={Logo}
+                        alt="Khana Khazana Logo"
+                        className="object-cover"
+                    />
                 </Link>
 
                 <ul className="flex gap-4 text-sm text-gray-500 items-center">

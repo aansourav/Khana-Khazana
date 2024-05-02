@@ -10,8 +10,8 @@ const ItemCard = ({ item }) => {
         >
             <Image
                 src={thumbnail}
-                className="rounded-md"
-                alt=""
+                className="rounded-md "
+                alt={name}
                 width={300}
                 height={160}
             />

@@ -3,6 +3,18 @@ import ImageSection from "@/app/components/RecipeDetails/Image";
 import Steps from "@/app/components/RecipeDetails/Steps";
 import { getItemById } from "@/db/queries";
 
+export async function generateMetadata({ params }) {
+    const id = params?.id;
+    const item = await getItemById(id);
+
+    return {
+        title: `Khana Khazana | ${item?.name}`,
+        openGraph: {
+            images: [item?.thumbnail],
+        },
+    };
+}
+
 const DetailsPage = async ({ params: { id } }) => {
     const item = await getItemById(id);
     return (

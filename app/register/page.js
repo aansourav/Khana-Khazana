@@ -1,6 +1,12 @@
 import Link from "next/link";
 import Register from "../components/Register";
 
+export async function generateMetadata() {
+    return {
+        title: "Khana Khazana | Register",
+    };
+}
+
 const RegisterPage = () => {
     return (
         <main className="">
