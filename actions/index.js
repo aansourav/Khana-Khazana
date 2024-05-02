@@ -1,6 +1,6 @@
 "use server";
 
-import { createUser, findUser } from "@/db/queries";
+import { createUser, findUser, updateFavourite } from "@/db/queries";
 import { redirect } from "next/navigation";
 
 async function registerUser(formData) {
@@ -21,4 +21,13 @@ async function loginUser(formData) {
     }
 }
 
-export { loginUser, registerUser };
+async function toggleFavourite(itemId, authId) {
+    try {
+        const res = await updateFavourite(itemId, authId);
+        return res;
+    } catch (error) {
+        throw error;
+    }
+}
+
+export { loginUser, registerUser, toggleFavourite };

@@ -24,15 +24,15 @@ const schema = new Schema({
     },
 });
 
-schema.pre("save", async function (next) {
-    const existingUser = await this.constructor.findOne({ email: this.email });
-    if (existingUser) {
-        const error = new Error("A user with this email already exists");
-        next(error);
-    } else {
-        next();
-    }
-});
+// schema.pre("save", async function (next) {
+//     const existingUser = await this.constructor.findOne({ email: this.email });
+//     if (existingUser) {
+//         const error = new Error("A user with this email already exists");
+//         next(error);
+//     } else {
+//         next();
+//     }
+// });
 
 export const userModel =
-    mongoose.models.users ?? mongoose.model("users", schema);
+    mongoose.models?.users ?? mongoose.model("users", schema);

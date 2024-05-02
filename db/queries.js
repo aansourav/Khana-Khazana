@@ -1,5 +1,6 @@
 import { itemModel } from "@/models/item-model";
 import { userModel } from "@/models/user-model";
+import { revalidatePath } from "next/cache";
 
 import {
     replaceMongoIdInArray,
@@ -43,6 +44,35 @@ async function findUser(credentials) {
     return null;
 }
 
+async function getUserById(authId) {
+    const user = await userModel.findById(authId).lean();
+    return replaceMongoIdInObject(user);
+}
+
+async function updateFavourite(itemId, authId) {
+    const user = await userModel.findById(authId);
+
+    if (user) {
+        const isFavourite = user.favourites.find(
+            (id) => id.toString() === itemId
+        );
+
+        if (isFavourite) {
+            user.favourites.pull(itemId);
+            await user.save();
+            revalidatePath(`/details/${itemId}`);
+            return user.favourites;
+        } else {
+            user.favourites.push(itemId);
+            await user.save();
+            revalidatePath(`/details/${itemId}`);
+            return user.favourites;
+        }
+    } else {
+        return { message: "Please login first!" };
+    }
+}
+
 export {
     createUser,
     findUser,
@@ -50,4 +80,6 @@ export {
     getCategories,
     getItemById,
     getItemsByCategory,
+    getUserById,
+    updateFavourite,
 };
