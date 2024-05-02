@@ -2,6 +2,7 @@ import { itemModel } from "@/models/item-model";
 import { userModel } from "@/models/user-model";
 import { revalidatePath } from "next/cache";
 
+import { dbConnect } from "@/services/mongo";
 import {
     replaceMongoIdInArray,
     replaceMongoIdInObject,
@@ -9,11 +10,13 @@ import {
 import mongoose from "mongoose";
 
 async function getAllItems() {
+    await dbConnect();
     const allItems = await itemModel.find().lean();
     return replaceMongoIdInArray(allItems);
 }
 
 async function getItemById(id) {
+    await dbConnect();
     if (!mongoose.Types.ObjectId.isValid(id)) {
         throw new Error("Invalid ObjectId");
     }
@@ -22,6 +25,7 @@ async function getItemById(id) {
 }
 
 async function getCategories() {
+    await dbConnect();
     const allItems = await itemModel.find().lean();
     const uniqueCategories = new Set();
     allItems.forEach((recipe) => {
@@ -32,15 +36,18 @@ async function getCategories() {
 }
 
 async function getItemsByCategory(category) {
+    await dbConnect();
     const items = await itemModel.find({ category }).lean();
     return replaceMongoIdInArray(items);
 }
 
 async function createUser(user) {
+    await dbConnect();
     return await userModel.create(user);
 }
 
 async function findUser(credentials) {
+    await dbConnect();
     const user = await userModel.findOne(credentials).lean();
     if (user) {
         return replaceMongoIdInObject(user);
@@ -49,11 +56,13 @@ async function findUser(credentials) {
 }
 
 async function getUserById(authId) {
+    await dbConnect();
     const user = await userModel.findById(authId).lean();
     return replaceMongoIdInObject(user);
 }
 
 async function updateFavourite(itemId, authId) {
+    await dbConnect();
     const user = await userModel.findById(authId);
 
     if (user) {

@@ -1,5 +1,6 @@
 import ItemCard from "@/app/components/ItemCard";
 import { getItemsByCategory } from "@/db/queries";
+import { dbConnect } from "@/services/mongo";
 
 export async function generateMetadata({ params }) {
     const category = decodeURIComponent(params?.category);
@@ -10,6 +11,7 @@ export async function generateMetadata({ params }) {
 
 const CategoryPage = async ({ params: { category } }) => {
     const itemCategory = decodeURIComponent(category);
+    await dbConnect();
     const items = await getItemsByCategory(itemCategory);
 
     return (

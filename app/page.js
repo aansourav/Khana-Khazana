@@ -1,9 +1,11 @@
 import { getAllItems } from "@/db/queries";
+import { dbConnect } from "@/services/mongo";
 import HeroSection from "./components/HeroSection";
 import ItemCard from "./components/ItemCard";
 import Sidebar from "./components/Sidebar";
 
 export default async function Home() {
+    await dbConnect();
     const items = await getAllItems();
     return (
         <main>

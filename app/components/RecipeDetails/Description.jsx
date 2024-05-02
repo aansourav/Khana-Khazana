@@ -108,7 +108,7 @@ const Description = ({ item }) => {
                         <path d="M8.7 10.7l6.6 -3.4" />
                         <path d="M8.7 13.3l6.6 3.4" />
                     </svg>
-                    <ShareButton />
+                    <ShareButton id={id} />
                 </div>
             </div>
         </div>
