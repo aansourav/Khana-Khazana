@@ -3,7 +3,7 @@
 import { FacebookShareButton } from "react-share";
 
 const ShareButton = ({ id }) => {
-    const url = `/details/${id}`;
+    const url = `https://khanakhazana-aansourav.vercel.app/details/${id}`;
     return (
         <span>
             <FacebookShareButton url={url}>Share</FacebookShareButton>
