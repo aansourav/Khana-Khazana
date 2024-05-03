@@ -17,8 +17,8 @@ const FavouriteButton = ({ itemId }) => {
 
     async function handleToggleFavourite() {
         if (auth) {
-            const res = await toggleFavourite(itemId, auth.id);
             setIsFavourite(!isFavourite);
+            const res = await toggleFavourite(itemId, auth.id);
             setAuth({ ...auth, favourites: res });
         } else {
             alert("Please login to favourite this recipe");
