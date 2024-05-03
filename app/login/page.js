@@ -4,6 +4,7 @@ import Login from "../components/Login";
 export async function generateMetadata() {
     return {
         title: "Khana Khazana | Login",
+        description: "Login to Khana Khazana",
     };
 }
 

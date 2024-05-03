@@ -10,6 +10,7 @@ export async function generateMetadata({ params }) {
 
     return {
         title: `Khana Khazana | ${item?.name}`,
+        description: item?.description,
         openGraph: {
             images: [item?.thumbnail],
         },

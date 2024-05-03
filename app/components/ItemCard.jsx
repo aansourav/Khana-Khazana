@@ -1,8 +1,10 @@
+import { getBlurData } from "@/utils/blur-generator";
 import Image from "next/image";
 import Link from "next/link";
 
-const ItemCard = ({ item }) => {
+const ItemCard = async ({ item }) => {
     const { name, rating, author, thumbnail } = item;
+    const { base64 } = await getBlurData(thumbnail);
     return (
         <Link
             className="card shadow-md px-3 py-2 rounded-md"
@@ -14,6 +16,8 @@ const ItemCard = ({ item }) => {
                 alt={name}
                 width={300}
                 height={160}
+                placeholder="blur"
+                blurDataURL={base64}
             />
             <h4 className="my-2">
                 Chef{" "}

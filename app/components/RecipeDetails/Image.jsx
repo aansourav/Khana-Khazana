@@ -1,6 +1,8 @@
+import { getBlurData } from "@/utils/blur-generator";
 import Image from "next/image";
 
-const ImageSection = ({ image, name }) => {
+const ImageSection = async ({ image, name }) => {
+    const { base64 } = await getBlurData(image);
     return (
         <div className="col-span-12 md:col-span-6">
             <Image
@@ -9,6 +11,8 @@ const ImageSection = ({ image, name }) => {
                 className="w-full h-full rounded-lg object-contain"
                 width={500}
                 height={500}
+                placeholder="blur"
+                blurDataURL={base64}
             />
         </div>
     );

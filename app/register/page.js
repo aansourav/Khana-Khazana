@@ -4,6 +4,7 @@ import Register from "../components/Register";
 export async function generateMetadata() {
     return {
         title: "Khana Khazana | Register",
+        description: "Register to Khana Khazana",
     };
 }
 

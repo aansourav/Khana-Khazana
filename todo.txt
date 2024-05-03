@@ -1,4 +1,4 @@
-suspense
-semantic
-active route
-share
+twitter
+immidiate favourite toggle
+unique user email
+
