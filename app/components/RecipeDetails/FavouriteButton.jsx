@@ -3,6 +3,7 @@
 import { toggleFavourite } from "@/actions";
 import { useAuth } from "@/hooks/useAuth";
 import { useEffect, useState } from "react";
+import { Bounce, toast } from "react-toastify";
 
 const FavouriteButton = ({ itemId }) => {
     const { auth, setAuth } = useAuth();
@@ -21,7 +22,17 @@ const FavouriteButton = ({ itemId }) => {
             const res = await toggleFavourite(itemId, auth.id);
             setAuth({ ...auth, favourites: res });
         } else {
-            alert("Please login to favourite this recipe");
+            toast.error("Please login to favourite this recipe", {
+                position: "top-center",
+                autoClose: 1500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Bounce,
+            });
         }
     }
     return (

@@ -4,7 +4,7 @@ import { loginUser } from "@/actions";
 import { useAuth } from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { toast } from "react-toastify";
+import { Bounce, toast } from "react-toastify";
 
 const Login = () => {
     const [error, setError] = useState("");
@@ -19,8 +19,16 @@ const Login = () => {
             if (user) {
                 setAuth(user);
                 router.push("/");
-                toast.success("Logged in successfully", {
-                    position: "top-right",
+                toast.success("Logged in successfully!", {
+                    position: "top-center",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Bounce,
                 });
             } else {
                 setError("Invalid credentials");
