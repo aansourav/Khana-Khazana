@@ -1,4 +1,5 @@
 import AuthProvider from "@/providers/AuthProvider";
+import ToastProvider from "@/providers/ToastProvider";
 import { dbConnect } from "@/services/mongo";
 import { Inter } from "next/font/google";
 import Navbar from "./components/Navbar";
@@ -16,10 +17,12 @@ export default async function RootLayout({ children }) {
     return (
         <html lang="en">
             <body className={inter.className}>
-                <AuthProvider>
-                    <Navbar />
-                    {children}
-                </AuthProvider>
+                <ToastProvider>
+                    <AuthProvider>
+                        <Navbar />
+                        {children}
+                    </AuthProvider>
+                </ToastProvider>
             </body>
         </html>
     );

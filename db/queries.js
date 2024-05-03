@@ -43,6 +43,9 @@ async function getItemsByCategory(category) {
 
 async function createUser(user) {
     await dbConnect();
+    if (await userModel.findOne({ email: user.email })) {
+        throw new Error("User already exists");
+    }
     return await userModel.create(user);
 }
 
