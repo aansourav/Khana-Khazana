@@ -18,7 +18,7 @@ async function getAllItems() {
 async function getItemById(id) {
     await dbConnect();
     if (!mongoose.Types.ObjectId.isValid(id)) {
-        throw new Error("Invalid ObjectId");
+        throw new Error("Something went wrong!");
     }
     const item = await itemModel.findById(id).lean();
     return replaceMongoIdInObject(item);
