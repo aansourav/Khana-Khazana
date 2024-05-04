@@ -2,6 +2,7 @@ import AuthProvider from "@/providers/AuthProvider";
 import ToastProvider from "@/providers/ToastProvider";
 import { dbConnect } from "@/services/mongo";
 import { Inter } from "next/font/google";
+import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import "./globals.css";
 
@@ -21,6 +22,7 @@ export default async function RootLayout({ children }) {
                     <AuthProvider>
                         <Navbar />
                         {children}
+                        <Footer />
                     </AuthProvider>
                 </ToastProvider>
             </body>
