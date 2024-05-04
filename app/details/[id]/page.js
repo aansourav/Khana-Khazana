@@ -2,7 +2,6 @@ import Description from "@/app/components/RecipeDetails/Description";
 import ImageSection from "@/app/components/RecipeDetails/Image";
 import Steps from "@/app/components/RecipeDetails/Steps";
 import { getItemById } from "@/db/queries";
-import { dbConnect } from "@/services/mongo";
 
 export async function generateMetadata({ params }) {
     const id = params?.id;
@@ -18,7 +17,6 @@ export async function generateMetadata({ params }) {
 }
 
 const DetailsPage = async ({ params: { id } }) => {
-    await dbConnect();
     const item = await getItemById(id);
     return (
         <main>

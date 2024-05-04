@@ -3,7 +3,7 @@
 import { toggleFavourite } from "@/actions";
 import { useAuth } from "@/hooks/useAuth";
 import { useEffect, useState } from "react";
-import { Bounce, toast } from "react-toastify";
+import { toast, Zoom } from "react-toastify";
 
 const FavouriteButton = ({ itemId }) => {
     const { auth, setAuth } = useAuth();
@@ -31,7 +31,7 @@ const FavouriteButton = ({ itemId }) => {
                 draggable: false,
                 progress: undefined,
                 theme: "colored",
-                transition: Bounce,
+                transition: Zoom,
             });
         }
     }
@@ -53,6 +53,7 @@ const FavouriteButton = ({ itemId }) => {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 className="icon icon-tabler icons-tabler-outline icon-tabler-heart"
+                alt="Favourite button icon"
             >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />

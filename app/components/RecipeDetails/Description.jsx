@@ -27,6 +27,7 @@ const Description = ({ item }) => {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         className="mx-auto"
+                        alt="Prep time icon"
                     >
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
@@ -49,6 +50,7 @@ const Description = ({ item }) => {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         className="mx-auto"
+                        alt="Cook time icon"
                     >
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path d="M6.5 17h11" />
@@ -72,6 +74,7 @@ const Description = ({ item }) => {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         className="mx-auto"
+                        alt="Number of Servings icon"
                     >
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />

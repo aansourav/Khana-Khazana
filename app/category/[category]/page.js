@@ -1,7 +1,6 @@
 import ItemCard from "@/app/components/ItemCard";
 import Loading from "@/app/components/Loading";
 import { getItemsByCategory } from "@/db/queries";
-import { dbConnect } from "@/services/mongo";
 import { Suspense } from "react";
 
 export async function generateMetadata({ params }) {
@@ -14,7 +13,6 @@ export async function generateMetadata({ params }) {
 
 const CategoryPage = async ({ params: { category } }) => {
     const itemCategory = decodeURIComponent(category);
-    await dbConnect();
     const items = await getItemsByCategory(itemCategory);
 
     return (
