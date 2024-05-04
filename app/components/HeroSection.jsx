@@ -2,9 +2,10 @@ const HeroSection = () => {
     return (
         <section className="container">
             <div
+                alt="Hero section background image a girl eating food"
                 className="py-4 rounded-lg p-4 md:p-12 min-h-[450px] bg-cover grid place-items-center grid-cols-12"
                 style={{
-                    backgroundImage: `url('/images/cover.png')`, // Directly reference from the public directory
+                    backgroundImage: `url('/images/cover.png')`,
                 }}
             >
                 <div className="col-span-12 md:col-span-6">
