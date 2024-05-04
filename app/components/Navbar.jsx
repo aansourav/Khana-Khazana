@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "../../public/images/logo.png";
+import HomeMenuText from "./HomeMenuText";
+import RecipeMenuText from "./RecipeMenuText";
 import SignInOut from "./SignInOut";
 
 const Navbar = () => {
@@ -16,12 +18,16 @@ const Navbar = () => {
                 </Link>
 
                 <ul className="flex gap-4 text-sm text-gray-500 items-center">
-                    <li className="py-2 active">
-                        <Link href="/">Home</Link>
+                    <li className="py-2">
+                        <Link href="/">
+                            <HomeMenuText />
+                        </Link>
                     </li>
 
                     <li className="py-2">
-                        <Link href="/recipe">Recipe</Link>
+                        <Link href="/recipe">
+                            <RecipeMenuText />
+                        </Link>
                     </li>
 
                     <li className="py-2">

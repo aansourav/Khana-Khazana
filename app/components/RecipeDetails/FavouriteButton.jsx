@@ -24,11 +24,11 @@ const FavouriteButton = ({ itemId }) => {
         } else {
             toast.error("Please login to favourite this recipe", {
                 position: "top-center",
-                autoClose: 1500,
-                hideProgressBar: false,
+                autoClose: 1200,
+                hideProgressBar: true,
                 closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
+                pauseOnHover: false,
+                draggable: false,
                 progress: undefined,
                 theme: "colored",
                 transition: Bounce,
