@@ -10,7 +10,11 @@ const Register = () => {
         e.preventDefault();
         try {
             const formData = new FormData(e.currentTarget);
-            const user = await registerUser(formData);
+            const response = await registerUser(formData);
+            if (response?.message) {
+                setError(response.message);
+                return;
+            }
             router.push("/login");
         } catch (err) {
             setError(err.message);
