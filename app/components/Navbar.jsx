@@ -14,6 +14,8 @@ const Navbar = () => {
                         src={Logo}
                         alt="Khana Khazana Logo"
                         className="object-cover"
+                        width={165}
+                        height={54}
                     />
                 </Link>
 
