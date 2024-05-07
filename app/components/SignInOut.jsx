@@ -17,12 +17,20 @@ const SignInOut = () => {
         <div>
             {auth ? (
                 <>
-                    <span className="cursor-pointer" onClick={logout}>
+                    <span
+                        className="cursor-pointer py-2 bg-[#eb4a36] px-6  rounded-md text-white content-center"
+                        onClick={logout}
+                    >
                         Logout
                     </span>
                 </>
             ) : (
-                <Link href="/login">Login</Link>
+                <Link
+                    href="/login"
+                    className="py-2 bg-[#eb4a36] px-6  rounded-md text-white content-center"
+                >
+                    Login
+                </Link>
             )}
         </div>
     );
